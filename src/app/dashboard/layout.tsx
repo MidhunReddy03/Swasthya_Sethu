@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Video, Calendar, FileText, MessageSquare, LogOut, User, Users, Stethoscope, CreditCard, Activity, Shield } from 'lucide-react'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import NotificationBell from '@/components/NotificationBell'
+import { LogoWithText } from '@/components/Logo'
 
 export default async function DashboardLayout({
   children,
@@ -77,15 +78,10 @@ export default async function DashboardLayout({
       <aside className="fixed inset-y-0 left-0 w-64 bg-white border-r hidden md:block">
         <div className="p-6">
           <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-2">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Video className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-bold text-gray-900">SwasthyaSetu</span>
-            </div>
+            <LogoWithText size="sm" />
           </div>
           
-          <div className="mb-6 p-3 bg-gray-50 rounded-lg">
+          <div className="mb-6 p-3 bg-gray-50 rounded-xl">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                 <User className="w-5 h-5 text-blue-600" />
@@ -123,12 +119,7 @@ export default async function DashboardLayout({
 
       {/* Mobile Header */}
       <div className="md:hidden bg-white border-b p-4 flex justify-between items-center sticky top-0 z-40">
-        <div className="flex items-center gap-2">
-          <div className="bg-blue-600 p-2 rounded-lg">
-            <Video className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-lg font-bold text-gray-900">SwasthyaSetu</span>
-        </div>
+        <LogoWithText size="sm" />
         <div className="flex items-center gap-2">
           <NotificationBell />
           <LanguageSwitcher />

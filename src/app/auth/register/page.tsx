@@ -6,7 +6,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase-client'
-import { Stethoscope, Mail, Lock, User, Phone, ArrowRight, Check } from 'lucide-react'
+import { Mail, Lock, User, Phone, ArrowRight, Check } from 'lucide-react'
+import { LogoWithText } from '@/components/Logo'
 
 export default function RegisterPage() {
   const [step, setStep] = useState(1)
@@ -93,11 +94,9 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center mb-6">
-          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-3.5 rounded-2xl shadow-xl shadow-blue-200/50">
-            <Stethoscope className="w-8 h-8 text-white" />
-          </div>
-        </div>
+        <Link href="/" className="flex justify-center mb-6">
+          <LogoWithText size="lg" />
+        </Link>
         <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
           Create your account
         </h2>

@@ -6,7 +6,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase-client'
-import { Heart, Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react'
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react'
+import { LogoWithText } from '@/components/Logo'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -38,11 +39,8 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8" suppressHydrationWarning>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2 mb-6">
-          <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-2.5 rounded-xl shadow-lg">
-            <Heart className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-xl font-bold text-gray-900">SwasthyaSetu</span>
+        <Link href="/" className="flex items-center justify-center mb-6">
+          <LogoWithText size="lg" />
         </Link>
         <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
           Welcome back
