@@ -13,15 +13,17 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [honeypot, setHoneypot] = useState('')
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const supabase = createClient()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (honeypot) return // Bot detected
     setLoading(true)
-    setError(null)
 
+    const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
 
     if (error) {
@@ -56,6 +58,9 @@ export default function LoginPage() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-fade-in">
         <div className="bg-white py-8 px-6 shadow-xl shadow-gray-200/50 sm:rounded-2xl sm:px-10 border border-gray-100" suppressHydrationWarning>
           <form className="space-y-6" onSubmit={handleLogin}>
+            <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
+              <input type="text" name="website" value={honeypot} onChange={e => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+            </div>
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm animate-scale-in">
                 <p className="font-medium">Error</p>

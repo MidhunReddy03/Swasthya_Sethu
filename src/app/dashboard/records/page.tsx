@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect, useRef } from 'react'
 import { createClient } from '@/lib/supabase-client'
-import { FileText, Calendar, Pill, Heart, Search, Plus, User, Stethoscope, Printer, Upload, File, X, Download } from 'lucide-react'
+import { FileText, Calendar, Pill, Heart, Search, Plus, User, Stethoscope, Printer, Upload, File, X, Download, Shield } from 'lucide-react'
 import Link from 'next/link'
 
 type Record = {
@@ -223,6 +223,27 @@ ${rx.follow_up_date ? `<p style="margin-top:20px;color:#2563eb;">Follow-up: ${ne
           {documents.length === 0 && (
             <p className="text-sm text-gray-400 text-center py-4">No documents uploaded yet. Upload prescriptions, reports, or scans.</p>
           )}
+        </div>
+      )}
+
+      {/* Data Export */}
+      {role === 'patient' && (
+        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <h2 className="text-sm font-semibold text-gray-900">Privacy & Data Export</h2>
+                <p className="text-xs text-gray-500">Download all your data as JSON</p>
+              </div>
+            </div>
+            <a href="/api/export"
+              className="px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-xl hover:bg-purple-700 transition shadow-sm flex items-center gap-2">
+              <Download className="w-4 h-4" /> Export My Data
+            </a>
+          </div>
         </div>
       )}
 
